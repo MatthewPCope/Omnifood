@@ -15,14 +15,8 @@ btnNavEl.addEventListener('click', () => {
 
 const sectionHeroEl = document.querySelector('.section-hero')
 
-const observer = new IntersectionObserver(function(entries){
-  const ent = entries[0]
-  if(ent.isIntersecting === false){
-    document.body.classList.add('sticky')
-  }
-  if (ent.isIntersecting === true) {
-    document.body.classList.remove("sticky");
-  }
+const observer = new IntersectionObserver(([entry])=>{
+  document.body.classList.toggle('sticky', !entry.isIntersecting)
 }, 
 {
   root: null,
